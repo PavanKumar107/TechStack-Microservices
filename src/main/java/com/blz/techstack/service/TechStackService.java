@@ -11,6 +11,7 @@ import com.blz.techstack.DTO.TechStackDTO;
 import com.blz.techstack.exception.CustomNotFoundException;
 import com.blz.techstack.model.TechStackModel;
 import com.blz.techstack.repository.TechStackRepository;
+import com.blz.techstack.util.TokenUtil;
 
 
 @Service
@@ -19,14 +20,14 @@ public class TechStackService implements ITechStackService {
 	@Autowired
 	TechStackRepository techStackRepository;
 
-//	@Autowired
-//	TokenUtil tokenUtil;
+	@Autowired
+	TokenUtil tokenUtil;
 
 //	@Autowired
 //	AdminRepository adminRepository;
 
-	@Autowired
-	MailService mailService;
+//	@Autowired
+//	MailService mailService;
 	
 	@Autowired
 	RestTemplate restTemplate;
@@ -43,7 +44,7 @@ public class TechStackService implements ITechStackService {
 //					admin.add(isIdPresent.get());
 //				}
 //			});
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8076/techstack/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-Admin:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			TechStackModel model = new TechStackModel();
 //			if(admin.size()>0) {
@@ -60,7 +61,7 @@ public class TechStackService implements ITechStackService {
 //		Long admId = tokenUtil.decodeToken(token);
 //		Optional<AdminModel> isTokenPresent = adminRepository.findById(admId);
 //		if(isTokenPresent.isPresent()) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8076/techstack/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-ADMIN:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<TechStackModel> isTechStackpresent = techStackRepository.findById(id);
 			if(isTechStackpresent.isPresent()) {
@@ -80,7 +81,7 @@ public class TechStackService implements ITechStackService {
 //		Long admId = tokenUtil.decodeToken(token);
 //		Optional<AdminModel> isTokenPresent = adminRepository.findById(admId);
 //		if(isTokenPresent.isPresent()) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8076/techstack/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-Admin:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			List<TechStackModel> getAllTechStack = techStackRepository.findAll();
 			if (getAllTechStack.size()>0) {
@@ -97,7 +98,7 @@ public class TechStackService implements ITechStackService {
 //		Long admId = tokenUtil.decodeToken(token);
 //		Optional<AdminModel> isTokenPresent = adminRepository.findById(admId);
 //		if(isTokenPresent.isPresent()) {
-		boolean isUserPresent = restTemplate.getForObject("http://localhost:8076/techstack/validateuser/" + token, Boolean.class);
+		boolean isUserPresent = restTemplate.getForObject("http://LMS-Admin:8067/admin/validateuser/" + token, Boolean.class);
 		if (isUserPresent) {
 			Optional<TechStackModel> isTechStackPresent = techStackRepository.findById(id);
 			if(isTechStackPresent.isPresent()) {

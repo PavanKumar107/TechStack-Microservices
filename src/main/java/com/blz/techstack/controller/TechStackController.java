@@ -37,7 +37,7 @@ public class TechStackController {
 	 * @Param: techStackDTO, token and id
 	 */
 	@PostMapping("/addtechstack")
-	public ResponseEntity<Response> addtechstack(@Valid@RequestBody TechStackDTO techStackDTO, @RequestHeader String token) {
+	public ResponseEntity<Response> addtechstack(@RequestBody TechStackDTO techStackDTO, @RequestHeader String token) {
 		TechStackModel techStackModel = techStackService.addtechstack(techStackDTO, token);
 		Response response = new Response("TechStack inserted successfully", 200, techStackModel);
 		return new ResponseEntity<>(response, HttpStatus.OK);	

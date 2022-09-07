@@ -24,11 +24,6 @@ public class TechStackModel {
 	@GenericGenerator(name = "techstack", strategy = "increment")
 	@GeneratedValue(generator = "techstack")
 	private long id;
-	@JsonIgnore
-	private LocalDateTime creatorStamp;
-//	@OneToMany
-//	@CollectionTable(name = "teckstackadmin", joinColumns = @JoinColumn(name = "id"))
-//	private List<AdminModel> creatorUser;
 	private String imagePath;
 	private boolean status;
 	private String techName;
